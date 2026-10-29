@@ -25,6 +25,20 @@ PowerShell helper to configure a **PT3G (Porsche PIWIS 3 VCI)** for use with
    `DeviceName` in the `[PartJ]` section.
 7. Prints a manual checklist for the steps that can't be scripted.
 
+## Fix: "running scripts is disabled on this system"
+
+Windows blocks unsigned scripts by default. The quickest safe fix (one-time, current user only):
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+Or run just this script without changing policy:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\configure_pt3g.ps1
+```
+
 ## Usage
 
 Run PowerShell **as Administrator**:
